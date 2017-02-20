@@ -37,6 +37,7 @@ public class Hangman {
             guessLetter(userInput);
             this.secretWord = hiddenWord();
             printStanding();
+            printMan();
             if(this.secretWord.equals(wordAnswer)) {
                 break;
             }
@@ -100,6 +101,80 @@ public class Hangman {
         }
         return secretWord;
 
+    }
+
+    public void printMan(){
+        switch(getNumberGuesses()){
+            case 0:
+                System.out.printf("-----------\n" +
+                        " |        |\n" +
+                        "          |\n" +
+                        "          |\n" +
+                        "          |\n" +
+                        "          |\n" +
+                        "          |\n" +
+                        "------------------------\n");
+                break;
+            case 1:
+                System.out.printf("-----------\n" +
+                        " |        |\n" +
+                        " ()       |\n" +
+                        "          |\n" +
+                        "          |\n" +
+                        "          |\n" +
+                        "          |\n" +
+                        "------------------------\n");
+                break;
+            case 2:
+                System.out.printf("-----------\n" +
+                        " |        |\n" +
+                        " ()       |\n" +
+                        " ||       |\n" +
+                        " ||       |\n" +
+                        "          |\n" +
+                        "          |\n" +
+                        "------------------------\n");
+                break;
+            case 3:
+                System.out.printf("-----------\n" +
+                        "  |        |\n" +
+                        "  ()       |\n" +
+                        " \\||       |\n" +
+                        "  ||       |\n" +
+                        "           |\n" +
+                        "           |\n" +
+                        "------------------------\n");
+                break;
+            case 4:
+                System.out.printf("-----------\n" +
+                        "  |        |\n" +
+                        "  ()       |\n" +
+                        " \\||/     |\n" +
+                        "  ||       |\n" +
+                        "           |\n" +
+                        "           |\n" +
+                        "------------------------\n");
+                break;
+            case 5:
+                System.out.printf("-----------\n" +
+                        "  |       |\n" +
+                        "  ()      |\n" +
+                        " \\||/     |\n" +
+                        "  ||      |\n" +
+                        " /        |\n" +
+                        "          |\n" +
+                        "------------------------\n");
+                break;
+            case 6:
+                System.out.printf("-----------\n" +
+                        " |        |\n" +
+                        " ()       |\n" +
+                        "\\||/      |\n" +
+                        " ||       |\n" +
+                        "/  \\      |\n" +
+                        "          |\n" +
+                        "------------------------\n");
+        }
     }
 
 }
