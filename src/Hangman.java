@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -29,28 +30,34 @@ public class Hangman {
     }
 
     public void play(){
-        Scanner scanner = new Scanner(System.in);
         wordAnswer = setWord();
-        while(numberGuesses < 6 ) {
-            System.out.printf("choose a letter: ");
-            String userInput = scanner.nextLine().toLowerCase();
-            guessLetter(userInput);
+        boolean endOfGame = true;
+        while(endOfGame) {
+            getUserInput();
             this.secretWord = hiddenWord();
             printStanding();
             printMan();
-            if(this.secretWord.equals(wordAnswer)) {
-                break;
-            }
-        }
-        if(numberGuesses == 6) {
-            System.out.printf( "Sorry, out of guesses, the word was: '%s'", wordAnswer);
-        }else {
-            System.out.println("great job, you guessed it!");
+            endOfGame = checkIfGameOver();
         }
     }
 
-    public void promptUser(){
+    public boolean checkIfGameOver(){
+        if(this.secretWord.equals(wordAnswer)){
+            System.out.println("Great job, you guessed it!");
+            return false;
+        }else if (numberGuesses == 6){
+            System.out.printf("Sorry, out of guesses, the word was: '%s'", wordAnswer);
+            return false;
+        }else{
+            return true;
+        }
+    }
 
+    public void getUserInput(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.printf("choose a letter: ");
+        String userInput = scanner.nextLine().toLowerCase();
+        guessLetter(userInput);
     }
 
     public String getWordAnswer(){
@@ -90,7 +97,6 @@ public class Hangman {
     }
 
     public String hiddenWord() {
-
         String secretWord = "";
         for(String letter : this.wordAnswer.split("")){
             if(this.lettersGuessed.contains(letter)){

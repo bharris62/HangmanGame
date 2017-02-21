@@ -1,10 +1,9 @@
-import org.junit.Rule;
+
 import org.junit.Test;
-import org.junit.contrib.java.lang.system.SystemOutRule;
 
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+
 import static org.junit.Assert.assertTrue;
 
 public class HangmanTest {
@@ -79,21 +78,5 @@ public class HangmanTest {
         assertTrue(h.getNumberGuesses() > 5);
     }
 
-    @Rule
-    public final SystemOutRule systemOutRule = new SystemOutRule().enableLog();
-
-    @Test
-    public void x() {
-        Hangman h = new Hangman();
-        h.setWordAnswer("hello");
-        h.guessLetter("x");
-        h.guessLetter("t");
-        h.guessLetter("m");
-        h.guessLetter("j");
-        h.guessLetter("a");
-        h.guessLetter("r");
-        h.play();
-        assertEquals(String.format("Sorry, out of guesses, the word was: '%s'",h.getWordAnswer()) , systemOutRule.getLog());
-    }
 
 }
