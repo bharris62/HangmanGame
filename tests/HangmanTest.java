@@ -78,5 +78,42 @@ public class HangmanTest {
         assertTrue(h.getNumberGuesses() > 5);
     }
 
+    @Test
+    public void checkIfGameOverWithCorrectGuess(){
+        Hangman h = new Hangman();
+        h.setSecretWord("hello");
+        h.setWordAnswer("hello");
+
+        assertTrue(h.checkIfGameOver() == false);
+    }
+
+    @Test
+    public void checkIfGameOverWithTooManyGuesses(){
+        Hangman h = new Hangman();
+        h.setWordAnswer("hello");
+        h.guessLetter("x");
+        h.guessLetter("t");
+        h.guessLetter("m");
+        h.guessLetter("j");
+        h.guessLetter("a");
+        h.guessLetter("r");
+
+        assertTrue(h.checkIfGameOver() == false);
+    }
+
+    @Test
+    public void checkIfGameContinues() {
+        Hangman h = new Hangman();
+        h.setWordAnswer("hello");
+        h.guessLetter("x");
+        h.guessLetter("t");
+        h.guessLetter("m");
+        h.guessLetter("j");
+        h.guessLetter("a");
+
+
+        assertTrue(h.checkIfGameOver() == true);
+    }
+
 
 }

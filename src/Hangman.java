@@ -183,4 +183,8 @@ public class Hangman {
         }
     }
 
+    public void setSecretWord(String word){
+        this.secretWord = word;
+    }
+
 }
