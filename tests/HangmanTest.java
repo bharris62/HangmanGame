@@ -29,12 +29,12 @@ public class HangmanTest {
         Hangman h = new Hangman();
         String word = h.setWord();
         String[] listOfWords = {
-                "dog", "cat", "elmo", "easy", "apple",
-                "caterpillar", "eskimo", "origami", "sushi"
+                "dog", "cat", "elmo", "water", "alaska",
+                "thermal", "inadvertently", "purified",
+                "eating", "forward", "drowning", "career"
         };
 
         assertTrue(Arrays.asList(listOfWords).contains(word));
-
     }
 
     @Test
